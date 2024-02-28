@@ -5,12 +5,31 @@ class Blog extends Model {}
 
 Blog.init(
     {
-        id: {},
-        title: {},
-        text: {},
-        created_on: {},
-        user_id: {},
-        comment: {},
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        text: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        created_on: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            }
+        },
     },
     {
         sequelize,
@@ -20,3 +39,5 @@ Blog.init(
         modelName: 'blog',
     }
 );
+
+module.exports = Blog;
