@@ -30,6 +30,10 @@ Blog.init(
                 key: 'id',
             }
         },
+        funding: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+        }
     },
     {
         sequelize,
