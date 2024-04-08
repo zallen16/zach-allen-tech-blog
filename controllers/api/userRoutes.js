@@ -5,18 +5,15 @@ router.post('/', async (req, res) => {
     try {
         console.log('test userRoutes router.post /');
         console.log(req.body);
-        const userData = await User.create({
-            username:req.body.name,
-            email:req.body.email,
-            password:req.body.password,
-        });
+        const userData = await User.create(req.body);
         console.log(userData);
         req.session.save(() => {
             req.session.logged_in = true;
             req.session.user_id = userData.id 
-            res.status(200).json(user);
+            res.status(200).json(userData);
         }) 
     } catch (err) {
+        console.log(err);
         res.status(500).json(err)
     }
 });
@@ -26,7 +23,7 @@ router.post('/login', async (req, res) => {
         console.log('test userRoutes router/post /login');
         const userData = await User.findOne({ where: {email: req.body.email } });
 
-        if (!userdata) {
+        if (!userData) {
             res
                 .status(400)
                 .json({ message: 'Incorrect email or password' });
