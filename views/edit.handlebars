@@ -1,0 +1,19 @@
+<h3>Edit blog:</h3>
+
+    <form class="form new-blog-form">
+      <div class="form-group">
+        <label for="blog-name">Title:</label>
+        <input class="form-input" type="text" id="blog-name" name="blog-name" value="{{title}}" />
+      </div>
+      <div class="form-group">
+        <label for="blog-funding">needed funding ($):</label>
+        <input class="form-input" type="number" id="blog-funding" name="blog-funding" value="{{funding}}" />
+      </div>
+      <div class="form-group">
+        <label for="blog-desc">Text:</label>
+        <textarea class="form-input" id="blog-desc" name="blog-desc" value=""></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
