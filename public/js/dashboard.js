@@ -31,20 +31,20 @@ const deleteButtonHandler = async (event) => {
         const id = event.target.getAttribute('data-id');
 
         const response = await fetch(`/api/blogs/${id}`, {
-            method: 'GET',
+            method: 'DELETE',
         });
 
-        const blog = await response.json();
+        // const blog = await response.json();
 
         if (response.ok) {
-            document.location.replace('/edit/' + blog.id);
+            document.location.replace('/dashboard');
         } else {
-            alert('Failed to find blog');
+            alert('Failed to delete blog');
         }
     }
 };
 
-const editButtonhandler = async (event) => {
+const editButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
