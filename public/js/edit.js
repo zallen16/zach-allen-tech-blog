@@ -4,12 +4,12 @@ const editFormHandler = async (event) => {
     const id = document.querySelector('.btn-update').value;
     const title = document.querySelector('#blog-title').value.trim();
     const funding = document.querySelector('#blog-funding').value.trim();
-    const post = document.querySelector('#blog-post').value.trim();
+    const text = document.querySelector('#blog-text').value.trim();
 
-    if (id && title && funding && post) {
+    if (id && title && funding && text) {
         const response = await fetch(`/api/blogs/${id}`, {
             method: 'PUT',
-            body: JSON.stringify({ title, funding, post }),
+            body: JSON.stringify({ title, funding, text }),
             headers: {
                 'Content-Type': 'application/json',
             },
