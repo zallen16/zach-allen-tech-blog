@@ -16,8 +16,14 @@
     </div>
 </form>
 
+<br>
 {{#if comments.length}}
 <h3>Comments:</h3>
 
 {{#each comments as |comment|}}
-    <p><b>{{format_time comment.created_on}}</b></p>
+    <p><b>{{format_time comment.date_created}}</b><br
+      />{{comment.comment_content}}</p>
+  {{/each}}
+{{/if}}
+
+<script src='../public/js/blog.js'></script>

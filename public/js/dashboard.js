@@ -46,21 +46,23 @@ const deleteButtonHandler = async (event) => {
 
 const editButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
-
-        const response = await fetch(`/api/blogs/${id}`, {
-            method: 'GET',
-        });
-
-        const blog = await response.json();
-
-        if (response.ok) {
-            document.location.replace('/edit/' + blog.id);
-        } else {
-            alert('Failed to find blog');
-        }
+      const id = event.target.getAttribute('data-id');
+  
+      const response = await fetch(`/api/blogs/${id}`, {
+        method: 'GET',
+      });
+      
+      const blog = await response.json();
+      //console.log(blog);
+  
+      if (response.ok) {
+        // Go to the edit page for this blog ID
+        document.location.replace('/edit/' + blog.id);
+      } else {
+        alert('Failed to find blog');
+      }
     }
-};
+  };
 
 document
     .querySelector('.new-blog-form')
