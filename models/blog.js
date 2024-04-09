@@ -16,7 +16,7 @@ Blog.init(
             allowNull: false,
         },
         text: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         created_on: {

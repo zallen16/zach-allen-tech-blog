@@ -1,14 +1,18 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
 
-    const title = document.querySelector('#blog-title').value.trim();
+    const title = document.querySelector('#blog-name').value.trim();
     const funding = document.querySelector('#blog-funding').value.trim();
-    const post = document.querySelector('#blog-post').value.trim();
+    const text = document.querySelector('#blog-desc').value.trim();
+    
+    console.log('title', title);
+    console.log('funding', funding);
+    // console.log('post', post);
 
-    if (title && fuding && post) {
+    if (title && funding && text) {
         const response = await fetch(`/api/blogs`, {
             method: 'POST',
-            body: JSON.stringify({ title, funding, post }),
+            body: JSON.stringify({ title: title, funding: funding, text: text }),
             headers: {
                 'Content-Type': 'application/json',
             }

@@ -23,17 +23,18 @@ router.get('/:id', withAuth, async (req, res) => {
 });
 
 router.post('/', withAuth, async (req, res) => {
-    console.log('blogRoutes post "/"');
+    console.log('blogRoutes post "/"', req.body);
     try {
         const newBlog = await Blog.create({
             title: req.body.title,
-            contents: req.body.post,
+            text: req.body.text,
             funding: req.body.funding,
-            user_id: req.sessions.user_id,
+            user_id: req.session.user_id,
         });
 
-        res.status(200).jsons(newBlog);
+        res.json(newBlog);
     } catch (err) {
+        console.error(err);
         res.status(400).json(err);
     }
 });
